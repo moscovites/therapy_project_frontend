@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <div class="hero grid grid-cols-2">
+    <div class="hero grid grid-cols-2 gap-2 " style={{ paddingRight: '5rem', paddingLeft: '5rem' }}>
    <div class="pl-10 flex justify-center">
 
   <div class="mr-auto place-self-center lg:col-span-7">

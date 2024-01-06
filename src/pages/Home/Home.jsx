@@ -105,7 +105,7 @@ const Home = () => {
       </div>
 
 <br/>
-      <section class="items-center bg-stone-100 lg:h-screen font-poppins dark:bg-gray-800 ">
+      <section class="items-center bg-stone-100 lg:h-screen font-poppins dark:bg-gray-800 " style={{ paddingRight: '5rem', paddingLeft: '5rem' }}>
         <div className='grid grid-cols-2 '>
 
         
