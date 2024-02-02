@@ -1,4 +1,24 @@
+
 body {
   font-family: 'Quicksand', sans-serif;
 }
 
+/* Only the scroll bar */
+::-webkit-scrollbar {
+  width: .5rem;
+  height: .5rem;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.15);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,.3);
+}
+
+.first-column {
+        width: 70%;
+    }
+
+.second-column {
+        width: 30%;
+    }

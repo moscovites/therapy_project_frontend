@@ -1,0 +1,8 @@
+1. complete patient onboarding
+2. complete patient dashboard
+3. complete therapist onboarding
+4. complete therapist dashboard
+5. complete user authentication
+7. video call feature
+8. text messages feature
+9. overhaul
