@@ -37,6 +37,8 @@ const TherapistOnBoarding = () => {
     let data = await response.json()
     if (response.status == 201) {
       nextStep()
+    } else{
+      alert("Something went wrong.")
     }
 
     console.log(data)
@@ -55,8 +57,10 @@ const TherapistOnBoarding = () => {
       },
     }
     )
+    
     if (response.status == 200) {
       alert("Your account has been successfully activated. You can now log in.")
+      window.location.href = 'http://localhost:5173/dashboard/therapist';
     } else {
       alert("something went wrong")
     }
@@ -159,32 +163,32 @@ const TherapistOnBoarding = () => {
 )}
         </div> 
         {step === 2 && (
-      <div>
-        <h4 class="mb-5 block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-green-500">
-          Enter verification code.
-        </h4>
-            <div class="relative flex w-full max-w-[24rem]">
-          
-  <div class="relative h-10 w-full min-w-[200px]">
-    <input 
-      id="verificationCode" 
-      name="verificationCode"
-      value={verificationCode}
-      onChange={handleVerificationCode}
-      type="text"
-      class="peer h-full w-full rounded-[7px]  bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700  transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-       />
-    
-  </div>
-  
-  <button
-    onClick={verifyEmail}
-    class="!absolute right-1 top-1 select-none rounded bg-green-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-gray-500/20 transition-all hover:shadow-lg hover:shadow-blue-gray-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-    type="button">
-    Verify
-  </button>
-</div>
-      </div>
+     <div class="flex justify-center items-center h-full">
+     <div>
+       <h4 class="mb-5 block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-green-500">
+         Enter verification code.
+       </h4>
+       <div class="relative flex w-full max-w-[24rem]">
+         <div class="relative h-10 w-full min-w-[200px]">
+           <input 
+             id="verificationCode" 
+             name="verificationCode"
+             value={verificationCode}
+             onChange={handleVerificationCode}
+             type="text"
+             class="peer h-full w-full rounded-[7px] bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+           />
+         </div>
+         <button
+           onClick={verifyEmail}
+           class="!absolute right-1 top-1 select-none rounded bg-green-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-gray-500/20 transition-all hover:shadow-lg hover:shadow-blue-gray-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+           type="button">
+           Verify
+         </button>
+       </div>
+     </div>
+   </div>
+   
       )}        
     </div>
   )

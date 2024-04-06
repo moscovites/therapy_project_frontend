@@ -1,6 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const TherapistDashboard = () => {
+
+  const [upcommingAppointment, setUpcommingAppointment] = useState({})
+
+
+  let getAppointments = async () => {
+    let response = await fetch("http://localhost:8000/apointment", {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    
+    })
+
+    let data = await response.json()
+    setUpcommingAppointment(data.data[0])
+    // console.log("all appointments", data.data)
+  }
+
+
+  useEffect(() => {
+    getAppointments()
+  }, []);
+
   return (
     <div>
         
@@ -13,14 +36,14 @@ const TherapistDashboard = () => {
 
 <aside id="cta-button-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-      <ul class="space-y-2 font-medium">
+      <ul class="space-y-2 font-medium mt-10">
          
          <li>
             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                   <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
                </svg>
-               <span class="flex-1 ms-3 whitespace-nowrap">TherapistDashboard</span>
+               <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
                <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
             </a>
          </li>
@@ -43,7 +66,7 @@ const TherapistDashboard = () => {
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="/dashboard/therapist/profile" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
                   <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
                </svg>
@@ -101,9 +124,10 @@ const TherapistDashboard = () => {
         </div>
         <div>
         <div class="h-40 rounded-xl shadow-md p-6 bg-green-100" >
-    <div class="font-semibold mb-1 text-lg">Today's appointments</div>
+    <div class="font-semibold mb-1 text-lg">Today's apptmts.</div>
     <div class="font-semibold text-5xl tracking-tight" >6</div>
     <div class="font-normal">Gross volume</div>
+   
 </div>
         </div>
         <div>
@@ -118,6 +142,7 @@ const TherapistDashboard = () => {
 
 
       </div>
+      {upcommingAppointment && (
       <div class="grid grid-cols-2 gap-4 mb-4">
          <div class="flex items-center justify-center rounded h-58 dark:bg-gray-800">
          <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
@@ -128,10 +153,14 @@ const TherapistDashboard = () => {
         </div>
         <div class="p-8">
         <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Patient: Jane Doe</div>
-        <p class="block mt-1 text-lg leading-tight font-medium text-black">Appointment Time: 13:00 - 14:00</p>        
-        <button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-           Postpone
+        <p class="block mt-1 text-sm leading-tight font-medium text-black"> Time: {upcommingAppointment.StartTime} - {upcommingAppointment.EndTime}</p> 
+        <p class="block mt-1 text-sm leading-tight font-medium text-black">Session type: {upcommingAppointment.Location}</p>               
+
+        <p class="block mt-1 text-sm leading-tight font-medium text-black">Address: {upcommingAppointment.AddressOrId}</p>               
+        <a href="http://localhost:3000/react-rtc-demo" target='_blank'><button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+           Start
         </button>
+        </a>
         <button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
             Cancel 
         </button>
@@ -146,15 +175,15 @@ const TherapistDashboard = () => {
 
     <div class="md:flex">
         <div class="p-8">
-        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Client overview</div>
-        <p class="block mt-1 text-lg leading-tight font-medium text-black">Appointment Time: 13:00 - 14:00</p>
-        <p class="mt-2 text-gray-500">Doctor: Dr. John Doe</p>
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Recovery level: Moderate</div>
+        <p class="block mt-1 text-lg leading-tight font-medium text-black">Recent session: 12/01/2024</p>
+        <p class="mt-2 text-gray-500">Email: jehoshaphattatiglo99@gmail.com</p>
         
         <button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-           Postpone
+           More >>>
         </button>
         <button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-            Cancel 
+             Cancel
         </button>
         </div>
     </div>
@@ -162,6 +191,7 @@ const TherapistDashboard = () => {
          </div>
         
       </div>
+      )}
       <div class="flex items-center justify-center mb-4 rounded bg-gray-50 dark:bg-gray-800">
          <div className='grid grid-cols-2 gap-4'>
             <div className='w-4/5'>

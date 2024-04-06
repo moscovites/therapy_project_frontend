@@ -1,6 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
 const Dashboard = () => {
+
+  const [upcommingAppointment, setUpcommingAppointment] = useState({})
+
+
+  let getAppointments = async () => {
+    let response = await fetch("http://localhost:8000/apointment", {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    
+    })
+
+    let data = await response.json()
+    setUpcommingAppointment(data.data[0])
+    // console.log("all appointments", data.data)
+  }
+
+
+  useEffect(() => {
+    getAppointments()
+  }, []);
+
+
   return (
     <div>
         
@@ -13,7 +37,7 @@ const Dashboard = () => {
 
 <aside id="cta-button-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-      <ul class="space-y-2 font-medium">
+      <ul class="space-y-2 font-medium mt-10">
          
          <li>
             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -34,6 +58,7 @@ const Dashboard = () => {
             </a>
          </li>
          <li>
+          
             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                   <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
@@ -70,7 +95,7 @@ const Dashboard = () => {
             </button>
          </div>
          <p class="mb-3 text-sm text-blue-800 dark:text-blue-400">
-            Preview the new Flowbite dashboard navigation! You can turn the new navigation off for a limited time in your profile.
+            Preview the new Flowbite TherapistDashboard navigation! You can turn the new navigation off for a limited time in your profile.
          </p>
          <a class="text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300" href="#">Turn new navigation off</a>
       </div>
@@ -79,6 +104,7 @@ const Dashboard = () => {
 
 <div class="p-4 sm:ml-64">
     <p className='text-2xl font-bold'>Welcome back, Shaphat!</p>
+    
    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg ">
       
       <div class="flex items-center justify-center h-48 mb-4 rounded-lg bg-gray-50 dark:bg-gray-800">
@@ -91,9 +117,9 @@ const Dashboard = () => {
       <p className="mx-auto mt-6 max-w-xl text-lg leading-8 font-bold">Experience the benefits of our community. No
         obligations, just join and explore.</p>
       <div className="isolate mt-8 mb-5 flex items-center justify-center -space-x-2 overflow-hidden">
-        <img className="relative z-30 inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://randomuser.me/api/portraits/men/34.jpg" alt />
-        <img className="relative z-20 inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://randomuser.me/api/portraits/women/2.jpg" alt />
-        <img className="relative z-10 inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://randomuser.me/api/portraits/women/3.jpg" alt />
+        <img className="relative z-30 inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://img.freepik.com/free-photo/medium-shot-young-woman-posing-city_23-2149452707.jpg?size=626&ext=jpg&ga=GA1.1.1421384848.1708432491&semt=ais" alt />
+        <img className="relative z-20 inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://img.freepik.com/free-photo/portrait-young-man-isolated_23-2149158658.jpg?size=626&ext=jpg&ga=GA1.1.1421384848.1708432491&semt=ais" alt />
+        <img className="relative z-10 inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://img.freepik.com/free-photo/afroamerican-couple-showing-peace-sign_23-2148422353.jpg?w=740&t=st=1708403814~exp=1708404414~hmac=422659a6519d65297b5256649e25005c278eb4618e72fa36be98d1e8ebc3238a" alt />
         <img className="relative z-0 inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://randomuser.me/api/portraits/men/4.jpg" alt />
         <span className="!ml-2 font-bold italic text-teal-500">Talk to our expert therapists</span>
       </div>
@@ -106,32 +132,48 @@ const Dashboard = () => {
 
 
       </div>
+      {upcommingAppointment && (
       <div class="grid grid-cols-2 gap-4 mb-4">
-         <div class="flex items-center justify-center rounded h-58 dark:bg-gray-800">
+      <div class="flex items-center justify-center rounded h-58 dark:bg-gray-800">
          <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+          <p className='bg-green-400 text-white font-bold text-center'>Upcomming session</p>
     <div class="md:flex">
         <div class="md:flex-shrink-0">
         <img class="md:h-38  w-full object-cover md:w-48" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Doctor's image"/>
         </div>
-        <div class="p-8">
-        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Dr. John Doe</div>
-        <p class="block mt-1 text-lg leading-tight font-medium text-black">Specialty: Cardiology</p>
-        
-        <button class="mt-5 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Book
-        </button>
-        </div>
+       
+  <div class="p-8">
+    <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Therapist: Jane Doe</div>
+    <p class="block mt-1 text-sm leading-tight font-medium text-black"> Time: {upcommingAppointment.StartTime} - {upcommingAppointment.EndTime}</p> 
+    <p class="block mt-1 text-sm leading-tight font-medium text-black">Location: {upcommingAppointment.Location}</p>  
+    <p class="block mt-1 text-sm leading-tight font-medium text-black">Address: {upcommingAppointment.AddressOrId}</p>                            
+    <a href="http://localhost:3000/react-rtc-demo">
+      <button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+        Start
+      </button>
+    </a>
+    <button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+      Cancel 
+    </button>
+  </div>
+         
+
     </div>
     </div>
 
          </div>
+         
          <div class="flex items-center justify-center rounded md:h-58 ">
+          
          <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+         <p className='bg-green-400 text-white font-bold text-center'>Previous session</p>
     <div class="md:flex">
+      
         <div class="p-8">
-        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Patient: Jane Doe</div>
-        <p class="block mt-1 text-lg leading-tight font-medium text-black">Appointment Time: 13:00 - 14:00</p>
-        <p class="mt-2 text-gray-500">Doctor: Dr. John Doe</p>
+          
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Status: Completed</div>
+        <p class="block mt-1 text-lg leading-tight font-medium text-black">Session date: 12/02/2024</p>
+        <p class="mt-2 text-gray-500">Mode: Video call</p>
         
         <button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
            Postpone
@@ -145,6 +187,9 @@ const Dashboard = () => {
          </div>
         
       </div>
+
+)}
+
       <div class="flex items-center justify-center mb-4 rounded bg-gray-50 dark:bg-gray-800">
          <div className='grid grid-cols-2 gap-4'>
             <div className='w-4/5'>
