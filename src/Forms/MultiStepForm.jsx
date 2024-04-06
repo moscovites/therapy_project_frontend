@@ -10,6 +10,8 @@ const MultiStepForm = () => {
   const [verificationCode, setVerificationCode] = useState()
   const [formData, setFormData] = useState({
    
+    
+
     userID: userId,
     age: '',
     gender: '',
