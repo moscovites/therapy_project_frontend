@@ -4,6 +4,49 @@ import { initFlowbite } from 'flowbite'
 
 const Navbar = () => {
 
+  const [formSuccess, setFormSuccess] = useState(null)
+
+  const [formData, setFormData] = useState({
+   
+      fullName: '',
+      email: ''
+    
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+
+
+  let joinWaitlist = async (e) => {
+    e.preventDefault()
+    console.log(formData)
+    let response = await fetch("https://therapyprojectbackend.onrender.com/waitlist/member", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        {
+         "fullName": formData.fullName,
+         "email": formData.email,
+        }
+      )
+    })
+
+    if (response.status == 201) {
+      setFormSuccess(true)
+    }
+    else {
+      setFormSuccess(false)
+    }
+
+    let data = await response.json()
+    console.log(data)
+  }
+
     useEffect(() => {
 
         initFlowbite();
@@ -69,6 +112,8 @@ const Navbar = () => {
         </button>
       </div>
       {/* Modal body */}
+
+      {formSuccess === null ?
       <div className="p-4 md:p-5 space-y-4 flex items-center justify-center">
         <div className="relative flex flex-col text-green-700 bg-transparent shadow-none rounded-xl bg-clip-border">
           <h4 className="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
@@ -85,6 +130,9 @@ const Navbar = () => {
       </h6>
       <div class="relative h-11 w-full min-w-[200px]">
         <input placeholder="Jon Doe"
+                         name="fullName"
+                         value={formData.fullName}
+                         onChange={handleChange}
           class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent !border-t-blue-gray-200 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50" />
         <label
           class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all before:content-none after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all after:content-none peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"></label>
@@ -95,6 +143,9 @@ const Navbar = () => {
       </h6>
       <div class="relative h-11 w-full min-w-[200px]">
         <input placeholder="name@mail.com"
+                         name="email"
+                         value={formData.email}
+                         onChange={handleChange}
           class="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent !border-t-blue-gray-200 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50" />
         <label
           class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all before:content-none after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all after:content-none peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"></label>
@@ -104,6 +155,7 @@ const Navbar = () => {
     </div>
  
     <button
+    onClick={joinWaitlist}
       class="mt-6 block w-full select-none rounded-lg bg-green-600 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
       type="button">
       Join now
@@ -112,6 +164,58 @@ const Navbar = () => {
   </form>
         </div>
       </div>
+
+      : null}
+
+
+      {formSuccess === true?
+     
+      <div class="bg-gray-100 h-screen">
+            <div class="bg-white p-6  md:mx-auto">
+              <svg viewBox="0 0 24 24" class="text-green-600 w-16 h-16 mx-auto my-6">
+                  <path fill="currentColor"
+                      d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
+                  </path>
+              </svg>
+              <div class="text-center">
+                  <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Thank you !</h3>
+                  <p class="text-gray-600 my-2">We will reach out to you once the beta version is available</p>
+                  <p> Have a great day!  </p>
+                  {/* <div class="py-10 text-center">
+                      <a href="#" class="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3">
+                          GO BACK 
+                     </a>
+                  </div> */}
+              </div>
+          </div>
+        </div> :
+        null}
+
+{formSuccess == false?
+     
+     <div class="bg-gray-100 h-screen">
+           <div class="bg-white p-6  md:mx-auto">
+             <svg viewBox="0 0 24 24" class="text-green-600 w-16 h-16 mx-auto my-6">
+                 <path fill="currentColor"
+                     d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
+                 </path>
+             </svg>
+             <div class="text-center">
+                 <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Email already exists</h3>
+                 <p class="text-gray-600 my-2">Thank you for completing your secure online payment.</p>
+                 <p> Have a great day!  </p>
+                 <div class="py-10 text-center">
+                     <a href="#" class="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3">
+                         GO BACK 
+                    </a>
+                 </div>
+             </div>
+         </div>
+       </div> :
+       null}
+
+
+
       {/* Modal footer */}
       <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
         {/* Your modal footer content goes here */}
