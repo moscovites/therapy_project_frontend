@@ -11,7 +11,6 @@ import TherapistOnBoarding from './Therapists/OnBoarding/OnBoarding';
 import TherapistProfile from './Therapists/Dashboard/TherapistProfile';
 
 
-
 function App() {
 
   return (

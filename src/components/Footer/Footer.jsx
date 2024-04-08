@@ -5,16 +5,16 @@ const Footer = () => {
     <div>
         
 
-<footer class="mt-10  bg-green-200" style={{ paddingRight: '5rem', paddingLeft: '5rem' }}>
+<footer class="bg-green-200" style={{ paddingRight: '5rem', paddingLeft: '5rem' }}>
     <div class="ml-20 w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
-          <div class="mb-6 md:mb-0">
+          {/* <div class="mb-6 md:mb-0">
               <a href="#" class="flex items-center">
                   <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
                   <span class="self-center text-2xl font-semibold whitespace-nowrap ">Therapy_project</span>
               </a>
-          </div>
-          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          </div> */}
+          {/* <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">Resources</h2>
                   <ul class=" font-medium">
@@ -38,9 +38,9 @@ const Footer = () => {
                       </li>
                   </ul>
               </div>
-          </div>
+          </div> */}
       </div>
-      <hr class="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
+      {/* <hr class="my-6 border-gray-200 sm:mx-auto  lg:my-8" /> */}
       <div class="sm:flex sm:items-center sm:justify-between">
           <span class="text-sm  sm:text-center">© 2023 <a href="https://flowbite.com/" class="hover:underline">therapy_project™</a>. All Rights Reserved.
           </span>

@@ -23,8 +23,8 @@ const Home = () => {
         <div className='flex'>
         <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Individual</h5>
         <span className='ml-auto'>
-          <a href="onboarding/patient">
-        <button type="button" class="text-green-700 bg-green-200 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center ">Get started</button>
+          <a >
+        <button data-modal-target="default-modal"  data-modal-toggle="default-modal" type="button" class="text-green-700 bg-green-200 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center ">Get started</button>
           </a>
 </span>
         </div>
@@ -39,8 +39,8 @@ const Home = () => {
         <div className='flex'>
         <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Couple</h5>
         <span className='ml-auto'>
-        <a href="onboarding/patient">
-        <button type="button" class="text-green-700 bg-green-200 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center ">Get started</button>
+        <a>
+        <button data-modal-target="default-modal"  data-modal-toggle="default-modal" type="button" class="text-green-700 bg-green-200 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center ">Get started</button>
           </a>
           </span>
         </div>
@@ -55,8 +55,8 @@ const Home = () => {
         <div className='flex'>
         <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Corporate</h5>
         <span className='ml-auto'>
-        <a href="onboarding/patient">
-        <button type="button" class="text-green-700 bg-green-200 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center ">Get started</button>
+        <a >
+        <button data-modal-target="default-modal"  data-modal-toggle="default-modal" type="button" class="text-green-700 bg-green-200 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center ">Get started</button>
           </a></span>
         </div>
         
@@ -88,10 +88,10 @@ const Home = () => {
     </p>
   </div>
   <div class="p-6 pt-0">
-    <button
+    <button data-modal-target="default-modal"  data-modal-toggle="default-modal"
       class="align-middle select-none   font-bold text-center text-green-500 uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
       type="button">
-    <a href="onboarding/patient"  class="hover:bg-green-800 inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-green-400 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 ">
+    <a   class="hover:bg-green-800 inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-green-400 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 ">
                 Get started
                 <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </a>
@@ -110,17 +110,16 @@ const Home = () => {
       <p class="font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
        Couples
       </p>
-      
     </div>
     <p class="text-center font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
     Nurture your relationship and build a stronger connection with our specialized couples counseling. 
     </p>
   </div>
   <div class="p-6 pt-0">
-  <button
+  <button data-modal-target="default-modal"  data-modal-toggle="default-modal"
       class="align-middle select-none   font-bold text-center text-green-500 uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
       type="button">
-    <a href="onboarding/patient"  class="hover:bg-green-800 inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-green-400 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 ">
+    <a class="hover:bg-green-800 inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-green-400 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 ">
                 Get started
                 <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </a>
@@ -146,10 +145,10 @@ const Home = () => {
     </p>
   </div>
   <div class="p-6 pt-0">
-  <button
+  <button data-modal-target="default-modal"  data-modal-toggle="default-modal"
       class="align-middle select-none   font-bold text-center text-green-500 uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
       type="button">
-    <a href="onboarding/patient"  class="hover:bg-green-800 inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-green-400 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 ">
+    <a class="hover:bg-green-800 inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-green-400 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 ">
                 Get started
                 <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </a>
