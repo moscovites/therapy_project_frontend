@@ -9,7 +9,7 @@ import Calendar from 'react-calendar';
 import AppointmentForm from './components/AppointmentForm/AppointmentForm';
 import TherapistOnBoarding from './Therapists/OnBoarding/OnBoarding';
 import TherapistProfile from './Therapists/Dashboard/TherapistProfile';
-import Videochat from './components/videochat';
+
 
 
 function App() {
@@ -27,7 +27,6 @@ function App() {
       <Route exact path = "/onboarding/therapist"  element={ <TherapistOnBoarding/>}/>
       <Route exact path = "/chat"  element={ <Chat/>}/>
       <Route exact path = "/calendar"  element={ <Calendar/>}/>
-      <Route exact path = "/videochat"  element={<Videochat/>}/>
     </Routes>
     </Router>
     </>
