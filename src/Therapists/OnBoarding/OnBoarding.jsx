@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const TherapistOnBoarding = () => {
+  const navigate = useNavigate();
 
   const [step, setStep] = useState(1);
   const [verificationCode, setVerificationCode] = useState()
@@ -67,7 +69,7 @@ const TherapistOnBoarding = () => {
     
     if (response.status == 200) {
       alert("Your account has been successfully activated. You can now log in.")
-      window.location.href = 'https://therapyproject.onrender.com/login';
+      navigate('/users/login')
     } else {
       alert("something went wrong")
     }

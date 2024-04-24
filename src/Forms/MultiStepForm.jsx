@@ -1,9 +1,11 @@
 // MultiStepForm.js
 import React, { useState } from 'react';
 import { Progress, Typography } from "@material-tailwind/react";
+import { useNavigate } from 'react-router-dom';
 
 
 const MultiStepForm = () => {
+  const navigate = useNavigate();
   const [progressCount, setProgressCount] = useState(0)
   const [step, setStep] = useState(1);
   const [userId, setUserId] = useState()
@@ -121,7 +123,7 @@ const MultiStepForm = () => {
     )
     if (response.status == 200) {
       alert("Your account has been successfully activated. You can now log in.")
-      window.location.href = 'https://therapyproject.onrender.com/login';
+      navigate('/users/login')
     } else {
       alert("something went wrong")
     }
