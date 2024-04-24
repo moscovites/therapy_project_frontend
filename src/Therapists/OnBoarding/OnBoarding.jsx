@@ -14,6 +14,11 @@ const TherapistOnBoarding = () => {
     password: ''
   });
 
+  const formDataWithUserType = {
+    ...registerFormData,
+    userType: 'therapist' // or whatever the default user type is
+  };
+
  
 
   const handleRegisterChange = (e) => {
@@ -33,7 +38,7 @@ const TherapistOnBoarding = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(registerFormData)
+      body: JSON.stringify(formDataWithUserType)
     })
 
     let data = await response.json()

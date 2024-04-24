@@ -43,6 +43,12 @@ const MultiStepForm = () => {
   });
 
 
+  const formDataWithUserType = {
+    ...registerFormData,
+    userType: 'therapist'
+  };
+
+
   let createUser = async () => {
     console.log(registerFormData)
 
@@ -51,7 +57,7 @@ const MultiStepForm = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(registerFormData)
+      body: JSON.stringify(formDataWithUserType)
     })
 
     let data = await response.json()
