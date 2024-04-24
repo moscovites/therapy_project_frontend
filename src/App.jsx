@@ -25,7 +25,7 @@ function App() {
       <Route exact path = "/dashboard/appointment"  element={ <AppointmentForm/>}/>
       <Route exact path = "/onboarding/patient"  element={ <OnBoarding/>}/>
       <Route exact path = "/onboarding/therapist"  element={ <TherapistOnBoarding/>}/>
-      <Route exact path = "/login"  element={ <Login/>}/>
+      <Route exact path = "/users/login"  element={ <Login/>}/>
       <Route exact path = "/chat"  element={ <Chat/>}/>
       <Route exact path = "/calendar"  element={ <Calendar/>}/>
     </Routes>
