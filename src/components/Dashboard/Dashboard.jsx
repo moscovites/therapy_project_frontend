@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { initFlowbite } from 'flowbite'
 
 const Dashboard = () => {
 
@@ -21,6 +22,7 @@ const Dashboard = () => {
 
 
   useEffect(() => {
+    initFlowbite()
     getAppointments()
   }, []);
 
@@ -133,7 +135,7 @@ const Dashboard = () => {
 
       </div>
       {upcommingAppointment && (
-      <div class="grid grid-cols-2 gap-4 mb-4">
+      <div class="grid grid-cols-1 md:grid md:grid-cols-2 gap-4 mb-4">
       <div class="flex items-center justify-center rounded h-58 dark:bg-gray-800">
          <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
           <p className='bg-green-400 text-white font-bold text-center'>Upcomming session</p>
@@ -191,7 +193,7 @@ const Dashboard = () => {
 )}
 
       <div class="flex items-center justify-center mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <div className='grid grid-cols-2 gap-4'>
+         <div className='grid grid-cols-1 md:grid md:grid-cols-2 gap-4'>
             <div className='w-4/5'>
                 
 

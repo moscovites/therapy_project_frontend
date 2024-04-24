@@ -9,6 +9,7 @@ import Calendar from 'react-calendar';
 import AppointmentForm from './components/AppointmentForm/AppointmentForm';
 import TherapistOnBoarding from './Therapists/OnBoarding/OnBoarding';
 import TherapistProfile from './Therapists/Dashboard/TherapistProfile';
+import Login from './components/Login/Login';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <Route exact path = "/dashboard/appointment"  element={ <AppointmentForm/>}/>
       <Route exact path = "/onboarding/patient"  element={ <OnBoarding/>}/>
       <Route exact path = "/onboarding/therapist"  element={ <TherapistOnBoarding/>}/>
+      <Route exact path = "/login"  element={ <Login/>}/>
       <Route exact path = "/chat"  element={ <Chat/>}/>
       <Route exact path = "/calendar"  element={ <Calendar/>}/>
     </Routes>

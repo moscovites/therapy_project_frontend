@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { initFlowbite } from 'flowbite'
 
 const TherapistDashboard = () => {
 
@@ -22,6 +23,7 @@ const TherapistDashboard = () => {
 
   useEffect(() => {
     getAppointments()
+    initFlowbite()
   }, []);
 
   return (
@@ -106,94 +108,89 @@ const TherapistDashboard = () => {
    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg ">
       
       
-      <div className='grid grid-cols-4 gap-4 mb-10'>
-        <div>
-        <div class="h-40 rounded-xl shadow-md p-6 bg-green-100" >
-    <div class="font-semibold mb-1 text-lg">Total payout</div>
-    <div class="font-semibold text-5xl tracking-tight" >$12.921</div>
-    <div class="font-normal">Gross volume</div>
+   <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10'>
+  <div>
+    <div className="h-40 rounded-xl shadow-md p-6 bg-green-100">
+      <div className="font-semibold mb-1 text-lg">Total payout</div>
+      <div className="font-semibold text-5xl tracking-tight">$12.921</div>
+      <div className="font-normal">Gross volume</div>
+    </div>
+  </div>
+
+  <div>
+    <div className="h-40 rounded-xl shadow-md p-6 bg-green-100">
+      <div className="font-semibold mb-1 text-lg">Current patients</div>
+      <div className="font-semibold text-5xl tracking-tight">21</div>
+      <div className="font-normal">Gross volume</div>
+    </div>
+  </div>
+
+  <div>
+    <div className="h-40 rounded-xl shadow-md p-6 bg-green-100">
+      <div className="font-semibold mb-1 text-lg">Today's apptmts.</div>
+      <div className="font-semibold text-5xl tracking-tight">6</div>
+      <div className="font-normal">Gross volume</div>
+    </div>
+  </div>
+
+  <div>
+    <div className="h-40 rounded-xl shadow-md p-6 bg-green-100">
+      <div className="font-semibold mb-1 text-lg">Daily hours</div>
+      <div className="font-semibold text-5xl tracking-tight">14</div>
+      <div className="font-normal">Gross volume</div>
+    </div>
+  </div>
 </div>
-        </div>
+<p className='font-bold text-2xl text-green-500 mb-5'>Upcoming sessions</p>
 
-        <div>
-        <div class="h-40 rounded-xl shadow-md p-6 bg-green-100" >
-    <div class="font-semibold mb-1 text-lg">Current patients</div>
-    <div class="font-semibold text-5xl tracking-tight" >21</div>
-    <div class="font-normal">Gross volume</div>
-</div>
-        </div>
-        <div>
-        <div class="h-40 rounded-xl shadow-md p-6 bg-green-100" >
-    <div class="font-semibold mb-1 text-lg">Today's apptmts.</div>
-    <div class="font-semibold text-5xl tracking-tight" >6</div>
-    <div class="font-normal">Gross volume</div>
-   
-</div>
-        </div>
-        <div>
-        <div class="h-40 rounded-xl shadow-md p-6 bg-green-100" >
-    <div class="font-semibold mb-1 text-lg">Daily hours</div>
-    <div class="font-semibold text-5xl tracking-tight" >14</div>
-    <div class="font-normal">Gross volume</div>
-</div>
-        </div>
-
-
-
-
-      </div>
       {upcommingAppointment && (
-      <div class="grid grid-cols-2 gap-4 mb-4">
-         <div class="flex items-center justify-center rounded h-58 dark:bg-gray-800">
-         <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
-          <p className='bg-green-400 text-white font-bold text-center'>Upcomming session</p>
-    <div class="md:flex">
-        <div class="md:flex-shrink-0">
-        <img class="md:h-38  w-full object-cover md:w-48" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Doctor's image"/>
-        </div>
-        <div class="p-8">
-        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Patient: Jane Doe</div>
-        <p class="block mt-1 text-sm leading-tight font-medium text-black"> Time: {upcommingAppointment.StartTime} - {upcommingAppointment.EndTime}</p> 
-        <p class="block mt-1 text-sm leading-tight font-medium text-black">Session type: {upcommingAppointment.Location}</p>               
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4">
 
-        <p class="block mt-1 text-sm leading-tight font-medium text-black">Address: {upcommingAppointment.AddressOrId}</p>               
-        <a href="http://localhost:3000/react-rtc-demo" target='_blank'><button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-           Start
-        </button>
-        </a>
-        <button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-            Cancel 
-        </button>
+      <div className="flex items-center justify-center rounded h-auto md:h-58 ">
+        <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+          <p className="bg-green-400 text-white font-bold text-center">Client overview</p>
+          <div className="md:flex">
+            <div className="p-8">
+              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Recovery level: Moderate</div>
+              <p className="block mt-1 text-lg leading-tight font-medium text-black">Recent session: 12/01/2024</p>
+              <p className="mt-2 text-gray-500">Email: jehoshaphattatiglo99@gmail.com</p>
+              <button className="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                More
+              </button>
+              <button className="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
-    </div>
-    </div>
-
-         </div>
-         <div class="flex items-center justify-center rounded md:h-58 ">
-         <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
-         <p className='bg-green-400 text-white font-bold text-center'>Client overview</p>
-
-    <div class="md:flex">
-        <div class="p-8">
-        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Recovery level: Moderate</div>
-        <p class="block mt-1 text-lg leading-tight font-medium text-black">Recent session: 12/01/2024</p>
-        <p class="mt-2 text-gray-500">Email: jehoshaphattatiglo99@gmail.com</p>
-        
-        <button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-           More
-        </button>
-        <button class="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-             Cancel
-        </button>
-        </div>
-    </div>
-    </div>
-         </div>
-        
       </div>
+
+      <div className="flex items-center justify-center rounded h-auto md:h-58 ">
+        <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+          <p className="bg-green-400 text-white font-bold text-center">Client overview</p>
+          <div className="md:flex">
+            <div className="p-8">
+              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Recovery level: Moderate</div>
+              <p className="block mt-1 text-lg leading-tight font-medium text-black">Recent session: 12/01/2024</p>
+              <p className="mt-2 text-gray-500">Email: jehoshaphattatiglo99@gmail.com</p>
+              <button className="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                More
+              </button>
+              <button className="w-25 mt-5 ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+    
       )}
-      <div class="flex items-center justify-center mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <div className='grid grid-cols-2 gap-4'>
+      <div class="flex items-center justify-center mb-4 rounded bg-gray-50 dark:bg-gray-800 mt-10">
+         <div className='grid grid-cols-1 md:grid md:grid-cols-2 gap-4'>
             <div className='w-4/5'>
                 
 
@@ -344,7 +341,7 @@ const TherapistDashboard = () => {
 
             </div>
             <div className='w-1/5'>
-                <p>Second one</p>
+                <p>Not decided what to put here yet.</p>
             </div>
          </div>
       </div>

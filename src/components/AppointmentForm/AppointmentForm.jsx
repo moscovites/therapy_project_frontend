@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { initFlowbite } from 'flowbite'
 
 const AppointmentForm = () => {
 
@@ -73,6 +74,7 @@ const AppointmentForm = () => {
 
     useEffect(() => {
       getAppointments()
+      initFlowbite()
     }, []);
 
 
@@ -176,7 +178,7 @@ const AppointmentForm = () => {
    <div className='p-4 border-2 border-gray-200 border-dashed rounded-lg'>
 
     <div>
-        <div className='grid grid-cols-2 ga-4'>
+        <div className='grid grid-cols-1 md:grid md:grid-cols-2 ga-4'>
             <div className='mt-10'>
     
 
@@ -186,7 +188,9 @@ const AppointmentForm = () => {
 
 
     <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3 mb-5">
+    {appointments.length < 1? <p className='text-center mt-10 font-bold text-2xl'>You don't have any appointments yet.</p> : null}
     <div class="">
+      
     {appointments && appointments.map((appointment, index) => (
                 <React.Fragment key={index}>
         <div class="p-8">

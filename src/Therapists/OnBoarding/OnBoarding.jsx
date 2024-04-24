@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer';
+import { Link } from 'react-router-dom';
 
 const TherapistOnBoarding = () => {
 
@@ -26,7 +28,7 @@ const TherapistOnBoarding = () => {
   let createUser = async () => {
     console.log(registerFormData)
 
-    let response = await fetch("http://127.0.0.1:8000/waitlist/register", {
+    let response = await fetch("https://therapy-project-backend.onrender.com/waitlist/register", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +50,7 @@ const TherapistOnBoarding = () => {
 
   let verifyEmail = async () => {
      
-    const response = await fetch(`http://127.0.0.1:8000/waitlist/verify-email/${verificationCode}`,
+    const response = await fetch(`https://therapy-project-backend.onrender.com/waitlist/verify-email/${verificationCode}`,
     {
       method: 'GET',
       
@@ -60,7 +62,7 @@ const TherapistOnBoarding = () => {
     
     if (response.status == 200) {
       alert("Your account has been successfully activated. You can now log in.")
-      window.location.href = 'http://localhost:5173/dashboard/therapist';
+      window.location.href = 'https://therapyproject.onrender.com/login';
     } else {
       alert("something went wrong")
     }
@@ -79,9 +81,9 @@ const TherapistOnBoarding = () => {
             <br/>
             <br/>
             
-<div className='flex justify-center'>
+<div className='flex justify-center  pt-20 mb-10'>
 {step === 1 && (
-        <form class="max-w-screen-lg mt-8 mb-2 w-80 sm:w-96">
+        <form class="max-w-screen-lg mt-8  mb-2 w-80 sm:w-96">
             <div>
                 <p className='font-bold text-2xl text-center text-green-400'>Create an account</p>
             </div>
@@ -145,13 +147,16 @@ const TherapistOnBoarding = () => {
             </label>
             <label class="mt-px font-light text-gray-700 cursor-pointer select-none" htmlFor="remember">
               <p class="flex items-center font-sans text-sm antialiased font-normal leading-normal text-gray-700">
-                I agree the
+                I agree to the
                 <a href="#" class="font-medium transition-colors hover:text-gray-900">
                   &nbsp;Terms and Conditions
                 </a>
               </p>
+              
             </label>
+            
           </div>
+          <p>If you already have an account, <Link className='text-blue-600 font-bold' to="/login">Login</Link></p>
           <button
           onClick={createUser}
             class="mt-6 block w-full select-none rounded-lg bg-green-500 py-3 px-6 text-center align-middle font-sans text-1xl font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -189,8 +194,16 @@ const TherapistOnBoarding = () => {
      </div>
    </div>
    
-      )}        
+      )}   
+
+<div className='mt-10 pt-20'>
+
+<Footer/>
+</div>
+        
+          
     </div>
+    
   )
 }
 

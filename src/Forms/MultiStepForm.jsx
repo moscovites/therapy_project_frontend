@@ -46,7 +46,7 @@ const MultiStepForm = () => {
   let createUser = async () => {
     console.log(registerFormData)
 
-    let response = await fetch("http://127.0.0.1:8000/waitlist/register", {
+    let response = await fetch("https://therapy-project-backend.onrender.com/waitlist/register", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const MultiStepForm = () => {
 
 
   let createPatientProfile = async (id) => {
-    let response = await fetch("http://127.0.0.1:8000/onboarding/patient", {
+    let response = await fetch("https://therapy-project-backend.onrender.com/onboarding/patient", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -104,7 +104,7 @@ const MultiStepForm = () => {
 
   let verifyEmail = async () => {
      
-    const response = await fetch(`http://127.0.0.1:8000/waitlist/verify-email/${verificationCode}`,
+    const response = await fetch(`https://therapy-project-backend.onrender.com/waitlist/verify-email/${verificationCode}`,
     {
       method: 'GET',
       
@@ -115,7 +115,7 @@ const MultiStepForm = () => {
     )
     if (response.status == 200) {
       alert("Your account has been successfully activated. You can now log in.")
-      window.location.href = 'http://localhost:5173/dashboard/patient';
+      window.location.href = 'https://therapyproject.onrender.com/login';
     } else {
       alert("something went wrong")
     }
@@ -210,9 +210,6 @@ const MultiStepForm = () => {
               value={formData.age}
               onChange={handleChange} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"/>
 </div>
-            
-             
-             
             </div>
             <div class="mb-6 flex justify-between">
   <button className='' type="button" onClick={prevStep}>
@@ -329,6 +326,8 @@ const MultiStepForm = () => {
         <h4 class="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-green-500">
           Sign Up
         </h4>
+
+
         <p class="block mt-1 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
           Nice to meet you! Enter your details to register.
         </p>

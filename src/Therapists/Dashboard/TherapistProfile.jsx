@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { initFlowbite } from 'flowbite'
 
 const TherapistProfile = () => {
     const [formData, setFormData] = useState({
@@ -42,6 +43,11 @@ const TherapistProfile = () => {
         let data = await response.json()
         console.log(data)
       }
+
+
+      useEffect(() => {
+       initFlowbite()
+      }, []);
 
   return (
     <div>
@@ -125,7 +131,7 @@ const TherapistProfile = () => {
        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg ">
           
           
-<form className="w-1/2 mx-auto text-center">
+<form className="w-full mx-auto text-center">
   <div className="flex  -mx-3 mb-6">
     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
