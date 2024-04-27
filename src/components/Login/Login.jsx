@@ -46,7 +46,7 @@ const Login = () => {
         localStorage.setItem("userType", decodedInfo.userType)
         if (decodedInfo.userType == "therapist") {
             window.location.href = 'https://therapyproject.onrender.com/dashboard/therapist';
-        } else if (decodedInfo.userType == "patient") {
+        } else if (decodedInfo.userType == "") {
             window.location.href = 'https://therapyproject.onrender.com/dashboard/patient';
         } else {
             alert("user type unknown")
