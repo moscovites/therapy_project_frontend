@@ -3,8 +3,11 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+  const navigate = useNavigate();
 
 
     const [loginFormData, setloginFormData] = useState({
@@ -44,7 +47,8 @@ const Login = () => {
         const decodedInfo = jwtDecode(data.jwt)
         localStorage.setItem("userId", decodedInfo.id)
         localStorage.setItem("userType", decodedInfo.userType)
-        window.location.href = 'https://therapyproject.onrender.com/dashboard/patient';
+        navigate('/dashboard/patient');
+        // window.location.href = 'https://therapyproject.onrender.com/dashboard/patient';
         // if (decodedInfo.userType == "therapist") {
         //     window.location.href = 'https://therapyproject.onrender.com/dashboard/therapist';
         // } else if (decodedInfo.userType == "") {
