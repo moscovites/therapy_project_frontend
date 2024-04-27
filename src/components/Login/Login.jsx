@@ -44,13 +44,14 @@ const Login = () => {
         const decodedInfo = jwtDecode(data.jwt)
         localStorage.setItem("userId", decodedInfo.id)
         localStorage.setItem("userType", decodedInfo.userType)
-        if (decodedInfo.userType == "therapist") {
-            window.location.href = 'https://therapyproject.onrender.com/dashboard/therapist';
-        } else if (decodedInfo.userType == "") {
-            window.location.href = 'https://therapyproject.onrender.com/dashboard/patient';
-        } else {
-            alert("user type unknown")
-        }
+        window.location.href = 'https://therapyproject.onrender.com/dashboard/patient';
+        // if (decodedInfo.userType == "therapist") {
+        //     window.location.href = 'https://therapyproject.onrender.com/dashboard/therapist';
+        // } else if (decodedInfo.userType == "") {
+        //     window.location.href = 'https://therapyproject.onrender.com/dashboard/patient';
+        // } else {
+        //     alert("user type unknown")
+        // }
         
       }
 
