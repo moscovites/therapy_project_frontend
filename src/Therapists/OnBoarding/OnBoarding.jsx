@@ -163,7 +163,7 @@ const TherapistOnBoarding = () => {
             </label>
             
           </div>
-          <p>If you already have an account, <Link className='text-blue-600 font-bold' to="/login">Login</Link></p>
+          <p>If you already have an account, <Link className='text-blue-600 font-bold' to="/users/login">Login</Link></p>
           <button
           onClick={createUser}
             class="mt-6 block w-full select-none rounded-lg bg-green-500 py-3 px-6 text-center align-middle font-sans text-1xl font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
